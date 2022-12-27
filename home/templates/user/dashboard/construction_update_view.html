@@ -1,0 +1,85 @@
+{% extends 'user/basic.html' %} {% load static %} {% block title %}{{page_data.page_name}}{{page_data.page_name}}{% endblock title%} {% block css %} {% endblock css %} {% block body %}
+
+<!-- Sub banner start -->
+<div class="sub-banner">
+  <div class="container">
+    <div class="breadcrumb-area">
+      <h1>          Construction Updates
+      </h1>
+      <ul class="breadcrumbs">
+        <li><a href="/">Home</a></li>
+        <li class="active">
+          Construction Updates
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Sub Banner end -->
+
+<!-- Services start -->
+
+<div class="properties-details-page content-area">
+  <div class="container">
+    <div class="inside-properties">
+      <div class="main-title">
+        <h1>
+          Construction Updates | {{page_data.page_name}}
+          </h1>
+      </div>
+      <iframe
+        src="https://www.youtube.com/embed/5e0LxrLSzok"
+        allowfullscreen=""
+      ></iframe>
+    </div>
+  </div>
+
+  <div class="services content-area content-area-12">
+    {%for construction in constructions_lst %}
+      <!-- Main title -->
+      <div class="main-title">
+        <h4>{{construction.title }} Construction Update – {{construction.pub_date}}
+        </h4>
+        <p>
+
+          {{construction.title | title }} is progressing well, with the completion date nearing.
+          
+        </p>
+      </div>
+      
+      <div class="slick-slider-area ">
+        <div
+          class="row slick-carousel"
+          data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+          {%for img in construction.images %}
+          <div class="slick-slide-item">
+            <div class="card service-box">  
+              <img
+                class="card-img-top"
+                src="/media/{{img.images}}"
+                style="height: 300px"
+                alt="service"
+              />
+            </div>
+          </div>
+          {%endfor%}
+
+
+        </div>
+        <div class="slick-btn mb-5">
+          <div class="slick-prev slick-arrow-buton-2 sab-4">
+            <i class="fa fa-angle-left"></i>
+          </div>
+          <div class="slick-next slick-arrow-buton-2 sab-3">
+            <i class="fa fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+      <br>
+          {%endfor%}
+  </div>
+</div>
+  <!-- Services end -->
+
+  {%endblock body%}
+</div>

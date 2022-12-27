@@ -1,0 +1,75 @@
+{% extends 'user/basic.html' %} {% load static %}
+ {% block title %} {{page_data.page_name}}{% endblock title%} {% block css %} {% endblock css %} 
+ 
+ 
+ {% block body %}
+
+<!-- Sub banner start -->
+<div class="sub-banner">
+  <div class="container">
+    <div class="breadcrumb-area">
+      <h1>{{page_data.member_name}}</h1>
+      <ul class="breadcrumbs">
+        <li><a href="/">Home</a></li>
+        <li class="active">Team Member</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Sub Banner end -->
+<!-- Agent page start -->
+<div class="agent-page content-area">
+    <div class="container">
+        <!-- Heading -->
+        <h1 class="heading-2">Team Member Details</h1>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row team-2 mb-50 g-0">
+                    <div class="col-xl-5 col-lg-6 col-md-5 col-sm-12">
+                        <div class="photo">
+                            <img src="{% static 'img/team/HEAD_SHOTS/RYAN GRIFFITHS - PROPERTY SALES CONSULTANT.jpeg' %}" alt="avatar-9" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-6 col-md-7 col-sm-12 align-self-center">
+                        <div class="detail">
+                            <h4>
+                                <a href="agent-detail.html">RYAN GRIFFITHS</a>
+                            </h4>
+                            <h5>Property Sales Consultan</h5>
+                            <div class="contact">
+                                <ul>
+                                    <li>
+                                        <i class="flaticon-pin"></i><a>44 New Design Street,</a>
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-mail"></i><a href="mailto:info@theme.com">info@theme.com</a>
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-phone"></i><a href="tel:+554XX-634-7071"> +55 4XX-634-7071</a>
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="social-list clearfix">
+                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="agent-biography">
+                    <h3 class="heading-2">Biography</h3>
+                    <p>Ryan Griffiths is one of our senior Property Investment Consultants. He has been with LPC Invest for nearing on two years now. He houses a great understanding of the property market and uses this to craft high-yielding property portfolios for his clients. Ryan’s sales record is proof of this, alongside the positive client reviews that regularly come his way. Through his work, Ryan always aims to understand his client’s investment goals and through working alongside them, crafts a strategy in order to achieve their end goal.</p>
+               
+
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+  {%endblock body%}
+</div>
