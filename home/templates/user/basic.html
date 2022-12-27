@@ -150,12 +150,13 @@
     <!-- Top header 3 end -->
 
     <!-- Main header start -->
-    <header class="main-header sticky-header main-header-5" id="main-header-5">
+    <header class="main-header sticky-header main-header-5 " id="main-header-5">
+      <div class="bgcurve d-md-block d-lg-none"></div>
         <div class="container">
             <div class="header-inner" >
-                <nav class="navbar navbar-expand-lg navbar-light" style="background-color: ;">
+                <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand logos mr-auto" href="/">
-                        <img src="{% static 'img/logo/logo-bw.png' %}" alt="logo" class="logo-photo"
+                        <img src="{% static 'img/logo/logo3.png' %}" alt="logo" class="logo-photo"
                         style="height:30px;">
                     </a>
 
@@ -256,6 +257,18 @@
 
                         </li>
                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/partners" id="navbarDropdownMenuLink6"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Partners
+                            </a>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/teams" id="navbarDropdownMenuLink6"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Teams
+                            </a>
+
+                        </li>
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="/profile" id="navbarDropdownMenuLink7"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 My Account
@@ -292,11 +305,15 @@
     <div id="dismiss" >
         <i class="text-light fa fa-close"></i>
     </div>
+
     <div class="sidebar-inner">
 
         <div class="sidebar-inner">
-            <div class="sidebar-logo" style="background:#00CE8D;">
-              <img src="/static/img/logo/logo-bw.png" alt="sidebarlogo" />
+          <div style="background:#00CE8D;height:71px; width:90%;position:absolute;z-index:-1;right:0;"></div>
+            <div class="sidebar-logo border-0" >
+
+              <img src="/static/img/logo/logo3.png" alt="sidebarlogo" />
+              <div class="bgcurve d-md-block d-lg-none"></div>
             </div>
             <div class="sidebar-navigation">
               <ul class="menu-list">
@@ -353,6 +370,12 @@
                 </li>
                 <li>
                     <a href="/contact">Contact Us</a>
+                </li>
+                <li>
+                    <a href="/partners">Our Partners</a>
+                </li>
+                <li>
+                    <a href="/teams">Our Teams</a>
                 </li>
                 <li><a href="/login">My Account <em class="fa fa-chevron-down"></em></a>
                     <ul>

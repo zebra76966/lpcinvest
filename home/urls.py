@@ -5,16 +5,16 @@ from home.views import LoginView, RegisterView
 
 urlpatterns = [
     path('',views.home_page,name='home'),
-    
+
     # Aboutus
     path('about',views.about,name='about'),
-    
+
     # Property
     path('all-properties',views.property_listing,name='properties'),
     path('properties-map',views.property_listing_map,name='property_listing_map'),
     path('city/<str:in_city>',views.property_list_by_city,name='property_list_by_city'),
     path('property-type/<str:in_type>/',views.property_list_by_type,name='property-type'),
-    
+
     path('properties/<str:id>',views.property_view,name='property_view'),
     path('send-property-form',views.property_form,name='property_form'),
 
@@ -22,7 +22,7 @@ urlpatterns = [
     # Blog
     path('blog',views.blog,name='blog'),
 
-    # Search 
+    # Search
     path('search',views.search,name='search'),
 
     path('resources',views.resources,name='resources'),
@@ -39,6 +39,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('thankyou',views.thankyou_page,name="thankyou"),
     path('faqs',views.faqs,name='faqs'),
+    path('teams',views.teams,name='teams'),
+    path('partners',views.partners,name='partners'),
     path('send-properties-to-map',views.SendPropertiesToMap,name='SendPropertiesToMap'),
     path('team-member/<str:name>',views.team_meber_view,name="team_meber_view"),
     path('get-favorited-properties',views.get_favorite_properties,name="get_favorite_properties"),
@@ -56,4 +58,4 @@ urlpatterns = [
     path('mortgage-calculator',views.mortgage_calculator,name='mortgage_calculator'),
 
 
-]   
+]

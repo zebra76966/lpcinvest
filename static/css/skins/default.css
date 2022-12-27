@@ -1131,7 +1131,7 @@ li.active.btn.filtr-button.filtr {
     }
 
     .main-header-5.header-shrink .header-inner {
-        background: #00CE8D!important;
+        background: transparent!important;
     }
 }
 
@@ -1167,7 +1167,7 @@ li.active.btn.filtr-button.filtr {
     }
 
     .main-header-5 .header-inner {
-        background: #00CE8D!important;
+        background: transparent!important;
     }
 
     #main-header-6 {

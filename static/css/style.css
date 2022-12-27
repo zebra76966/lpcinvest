@@ -13226,6 +13226,17 @@ margin-top: 30px;
   background:#1a1a1a;
   color:white;
 }
+
+.cont-sec{
+  color:white!important;
+  background-color: #00CE8D!important;
+  border: 2px solid transparent!important;
+}
+.cont-sec:hover{
+  color:#00CE8D!important;
+  border: 2px solid #00CE8D!important;
+  background-color: transparent!important;
+}
 /* #toggler:focus>.bar1{
   transform: translate(0, 17px) rotate(-45deg);
 }
@@ -13236,3 +13247,39 @@ margin-top: 30px;
   transform: translate(0, -17px) rotate(45deg);
 } */
 /* End Share Ham */
+
+.bgcurve::after {
+    width: 23%;
+}
+.bgcurve::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -3%;
+    width: 30%;
+    height: 71px;
+    z-index: -1;
+    background-color: #fff;
+    -webkit-transform: skew(23deg);
+    transform: skew(23deg);
+    border-radius: 0 10px 10px 0;
+}
+
+
+.tm-info{
+  background-color: rgba(0,0,0,0.5);
+  height:0;
+  position: absolute;
+  top:0;
+  z-index: 1;
+  width:100%;
+  padding: 20px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.tm-card:hover  .tm-info{
+  transition: all 0.5s ease-in-out;
+  height:400px;
+  display: block;
+  opacity: 1;
+}
