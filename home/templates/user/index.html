@@ -803,5 +803,34 @@
 </div>
 <!-- Partners end -->
 
+<!-- Cookie PopUp start -->
+<div class="row" >
+  <div class="col-12 p-0 m-0" id="popUp" style="position:fixed;z-index:999; left:0;bottom:0;">
+    <div style="
+          background-color:rgba(255,255,255,0.7);
+          width:100%;
+          position:fixed;
+          height:100%;
+          backdrop-filter:blur(10px);z-index:0;">
+    </div>
+    <div class="card" style="width:100%;background:transparent">
+      <img class="card-img-top mx-auto py-3" style="width:70px;" src="{% static 'img/logo/cookie-ac.png' %}" alt="Card image cap">
+      <div class="card-body text-center">
+        <h5 class="card-title">We use Cookies</h5>
+        <p class="card-text">We use cookies to personalise content and monitor traffic.</p>
+        <div class="d-flex justify-content-around">
+          <button class="btn cont-sec text-light" onclick="hcookie()">Accept</button>
+          <a href="#" class="btn btn-dark">Reject</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
+</div>
+<!-- Cookie PopUp end -->
+<script type="text/javascript">
+  function hcookie(){
+    document.getElementById('popUp').style.display="none";
+  }
+</script>
 {%endblock body%}
