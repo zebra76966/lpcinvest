@@ -206,9 +206,9 @@
             <div class="s-border"></div>
             <div class="m-border"></div>
             {%for property in common_properties_data.recent_properties%}
-            <div class="d-flex mb-3 recent-posts-box">
-              <a class="pr-3" href="/properties/{{property.id}}">
-                <img src="/media/{{property.image}}" alt="small-properties" class="flex-shrink-0 me-3" />
+            <div class="col-sm-12 justify-content-between d-flex mb-3 recent-posts-box">
+              <a class="pr-1" href="/properties/{{property.id}}">
+                <img src="/media/{{property.image}}" alt="small-properties" class="img-fluid flex-shrink-0 me-3" />
               </a>
               <div class="detail align-self-center">
                 <h5>
@@ -216,7 +216,7 @@
                 </h5>
                 <div class="listing-post-meta">
                   £{{property.price}}
-                  <a href="/properties/{{property.id}}"><i class="fa fa-calendar"></i> {{property.pub_date}} </a>
+                  <a  class="d-block" href="/properties/{{property.id}}"><i class="fa fa-calendar"></i> {{property.pub_date}} </a>
                 </div>
               </div>
             </div>
@@ -551,7 +551,7 @@
     console.log(new_url)
     return new_url
   }
-  
+
 
   $(document).ready(function () {
     $("#FilterButton").click(function () {

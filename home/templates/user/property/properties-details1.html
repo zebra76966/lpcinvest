@@ -565,11 +565,11 @@
                     <h3 class="sidebar-title">Recent Properties</h3>
                     {%for property in common_properties_data.recent_properties%}
                     <div class="d-flex mb-3 recent-posts-box">
-                        <a class="pr-3" href="/properties/{{property.id}}">
-                            <img src="/media/{{property.image}}" alt="small-properties" class="flex-shrink-0 me-3" />
+                        <a class="col-6 p-0" href="/properties/{{property.id}}">
+                            <img src="/media/{{property.image}}" alt="small-properties" class="flex-shrink-0 img-fluid w-100" />
                         </a>
-                        <div class="detail align-self-center">
-                            <h5>
+                        <div class="detail col-6 align-self-center">
+                            <h5 class="m-0">
                                 <a href="/properties/{{property.id}}">{{property.title}}</a>
                             </h5>
                             <div class="listing-post-meta">
@@ -592,7 +592,7 @@
 </div>
 <!--Download Guide section Start  -->
 <div class="my-5" style="box-shadow:0 0 10px rgba(0,0,0,0.2); background-image:url('/media/9-bl.png');
-background-position:center;bacground-repeat:no-repeat;background-attachment:center; background-size:100%;">
+background-position:center;background-repeat:no-repeat;background-attachment:center; background-size:cover;">
 <div class="container" >
   <div class="row d-flex justify-content-around p-3" >
     <div class="col-12 col-lg-6 p-3">
@@ -617,7 +617,7 @@ background-position:center;bacground-repeat:no-repeat;background-attachment:cent
 
 
     </div>
-    <div class="d-md-none d-lg-block col-lg-5 p-5">
+    <div class="d-none d-lg-block col-lg-5 p-5">
       <img class="img-fluid object-fit-cover h-100 rounded" style="box-shadow:0 0 10px rgba(0,0,0,0.5); transform:rotate(-10deg);object-fit:cover;" src="/media/media/iStock-171572347-1-scaled.jpg"/>
     </div>
   </div>

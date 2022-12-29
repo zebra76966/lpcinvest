@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
-from tinymce.models import HTMLField 
+from tinymce.models import HTMLField
 from datetime import datetime
 # from django.contrib.auth import get_user_model
 # User = get_user_model()
@@ -13,7 +13,7 @@ from geopy.geocoders import Nominatim
 class CustomUser(AbstractUser):
     email = models.EmailField(_('email address'), unique=True)
 
-    
+
 PROP_TYPE_CHOICES =(
     ("1", "studio"),
     ("2", "apartment"),)
@@ -36,6 +36,8 @@ CITIES_CHOICES = (
     ("6", "london"),
     ("7", "sheffield"),
     ("8","bradford"),
+    ("9","Preston"),
+    ("10","Nottingham")
     )
 
 
@@ -59,7 +61,7 @@ class Properties(models.Model):
     # Location
     adddress = models.CharField(max_length=50)
     city = models.CharField(max_length=20,choices = CITIES_CHOICES)
-    
+
     postal_code = models.CharField(max_length=10)
     lat = models.FloatField(blank=True)
     lon = models.FloatField(blank=True)
@@ -67,7 +69,7 @@ class Properties(models.Model):
     # Detailed Information
     content = HTMLField()
 
-    # Media 
+    # Media
     image = models.FileField(upload_to = 'media')
     year_built = models.CharField(max_length=10)
     embedded_link_youtube = models.CharField(max_length=100)
@@ -75,7 +77,7 @@ class Properties(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     def save(self, *args, **kwargs):
         self.title = self.title.capitalize()
         self.adddress = self.adddress.capitalize()
@@ -168,7 +170,7 @@ class Discount(models.Model):
         if self.is_percentage:
             return "{0}% - Discount".format(self.value)
         return "${0} - Discount".format(self.value)
-        
+
     class Meta:
         verbose_name = "Discount"
         verbose_name_plural = "Discounts"
@@ -180,7 +182,7 @@ class PropertyOffers(models.Model):
     # user = models.ForeignKey(Properties, default=None, on_delete=models.CASCADE)
     is_automaically = models.BooleanField(default=False)
     discount =  models.ForeignKey('Discount', on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return (str(self.title))
 
@@ -213,14 +215,14 @@ class DownloadableAssets(models.Model):
     #     image = Image.open(filename)
     #     image.thumbnail(size, Image.ANTIALIAS)
     #     image.save(filename)
-    #     # self.image= image 
+    #     # self.image= image
     #     return super(DownloadableAssets, self).save(*args, **kwargs)
 
 
 class ConstructionUpdates(models.Model):
     property = models.ForeignKey(Properties, default=None, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
-    desc = models.TextField(default = " ",blank=True)    
+    desc = models.TextField(default = " ",blank=True)
     pub_date = models.DateField(default=datetime.now())
 
     def __str__(self):
@@ -245,7 +247,7 @@ class Profile(models.Model):
     def __str__(self):
         return self.fname
 
-# Signals used to create profile instance 
+# Signals used to create profile instance
 @receiver(post_save, sender=CustomUser)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -282,7 +284,7 @@ class CityGuide(models.Model):
     name = models.CharField(max_length=20)
     image = models.FileField(upload_to = 'media/guide/city')
 
-    # Q1 
+    # Q1
     q_1_title = models.CharField(max_length=50,default = " ",blank=True)
     q_1_desc = models.TextField(default = " ",blank=True)
     q_1_image = models.FileField(upload_to = 'media/guide/city/q1',default = "default.png",blank=True)
