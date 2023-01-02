@@ -17,7 +17,7 @@ class PropertyImageAdmin(admin.ModelAdmin):
     pass
 
 
-# Property Updates
+# Property Updates 
 class ConstructionUpdatesImageAdmin(admin.StackedInline):
     model = ConstructionUpdatesImage
 
@@ -46,3 +46,5 @@ admin.site.register(Profile)
 admin.site.register(PropertyOffers)
 admin.site.register(Discount)
 admin.site.register(TeamMembers)
+
+

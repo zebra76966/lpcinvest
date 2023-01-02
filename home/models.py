@@ -263,12 +263,13 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class TeamMembers(models.Model):
+    image = models.FileField(upload_to = 'media/team')
     name = models.CharField(max_length=30, blank=True)
     role = models.CharField(max_length=30, blank=True)
     desc = models.TextField(default="")
     mobile = models.CharField(max_length=15, blank=True)
-    email = models.CharField(max_length=40, blank=True)
-    address = models.CharField(max_length=40, blank=True)
+    email = models.CharField(max_length=20, blank=True)
+    address = models.CharField(max_length=50, blank=True)
     def __str__(self):
         return self.name
 

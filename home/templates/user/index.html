@@ -1,7 +1,7 @@
 {% extends 'user/basic.html' %}
 {% load static %}
 
-{% block title %} Home{% endblock title%}
+{% block title %} UK Property Investments{% endblock title%}
 
 {% block css %}
 
@@ -18,156 +18,133 @@
 
 
 <!-- Banner start -->
-<div class="banner banner_video_bg" id="banner">
-    {% comment %} <div class="pattern-overlay">
-        <a id="bgndVideo" class="player"
-            data-property="{videoURL:'https://www.youtube.com/watch?v=5e0LxrLSzok',containment:'.banner_video_bg', quality:'large', autoPlay:true, mute:true, opacity:1}">bg</a>
-    </div> {% endcomment %}
-    <div id="bannerCarousole" class="carousel slide" data-ride="carousel">
+<div class="banner" id="banner">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item banner-max-height active">
-                <div class="carousel-caption banner-slider-inner bsi2 d-flex h-100 text-center">
-                    <div class="carousel-content container">
-                        <div class="text-center bi-2">
-                            <h2>Let's Take You To Your Dream Villa</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-                            <div class="inline-search-area isa-5 isa-992 clearfix">
-                                <form method='get' action='/search'>
-                                    <div class="row">
-                                        <div class="autocomplete col-md-6 col-sm-12 col-12" id='autocomplete'>
-                                            <input class="form-control search-fields sf" name='query' id="query"
-                                                placeholder="Search for Property and Property type"
-                                                hx-get="/search/autocompldete" hx-trigger="keyup changed delay:100ms"
-                                                hx-target="#search-results" hx-indicator=".htmx-indicator">
-
-                                            {% comment %} <div id="search-results"></div>
-                                            <ul class='ui-autocomplete' id="ui-autocomplete" style="color:red;"></ul>
-                                            {%endcomment %}
+            <div class="carousel-item item-bg active">
+                <img class="d-block w-100 h-100" src="{% static 'img/background-index/2.jpg' %}" alt="banner">
+                <div class="carousel-caption banner-slider-inner d-flex h-100 text-start">
+                    <div class="carousel-content container align-self-center">
+                        <div class="banner-info2">
+                            <div class="text-l">
+                                <h3 class="text-uppercase">Discover Modern Villa</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                </p>
+                                <div class="inline-search-area isa-5 isa-992 clearfix">
+                                    <form method='get' action='/search'>
+                                        <div class="row">
+                                            <div class="autocomplete col-md-6 col-sm-12 col-12" id='autocomplete'>
+                                                <input class="form-control search-fields sf" name='query' id="query"
+                                                    placeholder="Search for Property and Property type"
+                                                    hx-get="/search/autocompldete" hx-trigger="keyup changed delay:100ms"
+                                                    hx-target="#search-results" hx-indicator=".htmx-indicator">
+                                            </div>
+    
+                                            <div class="col-md-3 col-sm-6 col-6">
+                                                <select class="selectpicker search-fields" name="properties_status"
+                                                    id="properties_status">
+                                                    <option type="button" value="all">All Status </option>
+                                                    {%for status in common_properties_data.status%}
+                                                    <option>{{status}}</option>
+                                                    {%endfor%}
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6 col-6">
+                                                <button class="btn button-theme btn-search w-100 mb-0">
+                                                    <strong>Search</strong>
+                                                </button>
+                                            </div>
                                         </div>
-
-                                        <div class="col-md-3 col-sm-6 col-6">
-                                            <select class="selectpicker search-fields" name="properties_status"
-                                                id="properties_status">
-                                                <option type="button" value="all">All Status </option>
-                                                {%for status in common_properties_data.status%}
-                                                <option>{{status}}</option>
-                                                {%endfor%}
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 col-6">
-                                            <button class="btn button-theme btn-search w-100 mb-0">
-                                                <strong>Search</strong>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+          
+            <div class="carousel-item item-bg">
+                <img class="d-block w-100 h-100" src="{% static 'img/background-index/3.jpg' %}" alt="banner">
+                <div class="carousel-caption banner-slider-inner d-flex h-100 text-start">
+                    <div class="carousel-content container align-self-center">
+                        <div class="t-left banner-info2">
+                            <div class="text-l">
+                                <h3 class="text-uppercase">Find Your Amazing Home</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+   
 </div>
 <!-- Banner end -->
 
-
-<!-- Featured Properties start -->
-<div class="featured-properties content-area-12">
+<!-- Featured properties start -->
+<div class="featured-car-section comon-slick content-area">
     <div class="container">
         <!-- Main title -->
-        <div class="main-title-3">
+        <div class="main-title-5">
             <h1>Featured <span>Properties</span></h1>
+            <div class="title-border">
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+            </div>
         </div>
 
-        <!-- Slick slider area start -->
-        <div class="slick-slider-area">
-            <div class="row slick-carousel"
-                data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
-                {%for property in properties %}
-                <div class="slick-slide-item">
-                    <div class="property-box-6">
-                        <div class="property-photo">
-                            <a href="/properties/{{property.id}}"><img src="/media/{{property.image}}" alt="photo"
-                                    class="img-fluid w-100">
-                            </a>
-                            <div class="tag">{{property.status}}</div>
-                        </div>
-                        <div class="property-inner">
-                            <div class="property-info">
-                                <h4 class="properties-name">
-                                    <a href="/properties/{{property.id}}">{{property.title}}</a>
-                                </h4>
-                                <p class="location">
-                                    <a href="/properties/{{property.id}}">
-                                        <i class="fa fa-map-marker"></i> {{property.adddress}}</a>
-                                </p>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-area"></i> {{property.area}} sq ft
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-bed"></i> {{property.room}} Beds
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-bathroom"></i> {{property.bathrooms}} Baths
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-hover-content">
-                            <div class="property-photo">
-                                <a href="/properties/{{property.id}}">
-                                    <img src="/media/{{property.image}}" alt="photo" class="img-fluid w-100"
-                                        ></a>
-                            </div>
-                            <div class="property-info">
-                                <h4 class="properties-name">
-                                    <a href="/properties/{{property.id}}">{{property.title}}</a>
-                                </h4>
-                                <p class="location">
-                                    <a href="/properties/{{property.id}}">
-                                        <i class="fa fa-map-marker"></i> {{property.adddress}}</a>
-                                </p>
-                            </div>
-                            <ul class="member-socials clearfix">
-                                <li>
-                                    <i class="flaticon-area"></i> {{property.area}} sq ft
-                                </li>
-                                <li>
-                                    <i class="flaticon-bed"></i> {{property.room}} Beds
-                                </li>
-                                <li>
-                                    <i class="flaticon-bathroom"></i> {{property.bathrooms}} Baths
-                                </li>
+        <div class="slick row" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+           
+            {%for property in properties %}
 
-                            </ul>
-                        </div>
+            <div class="item">
+                <div class="property-box-3">
+                    <img src="/media/{{property.image}}" alt="photo" class="img-fluid w-100" style="height: 350px;">
+                    <div class="ling-section">
+                        <h3>
+                            <a href="/properties/{{property.id}}">{{property.title}}</a>
+                        </h3>
+                        <ul class="member-socials clearfix">
+                            <li>
+                                <i class="fa fa-map-marker"></i> {{property.city | title}}
+                            </li>                          
+                        </ul>
+                        {%if property.yields %}
+                        <ul class="member-socials clearfix">
+                            <li>
+                                <i class="fa fa-info-circle"></i> Net Yields: {{property.yields}}
+                            </li>
+                        </ul>
+                        {%endif%}
+                        <a href="/properties/{{property.id}}" class="read-more-btn">Read More</a>
                     </div>
                 </div>
-
-
-                {%endfor%}
-
-
             </div>
-            <div class="slick-btn">
-                <div class="slick-prev slick-arrow-buton-2 sab-4">
-                    <i class="fa fa-angle-left"></i>
-                </div>
-                <div class="slick-next slick-arrow-buton-2 sab-3">
-                    <i class="fa fa-angle-right"></i>
-                </div>
-            </div>
+         
+{%endfor%}
         </div>
     </div>
 </div>
-<!-- Featured Properties end -->
 
+<!-- Featured properties end -->
 
 
 <!-- Services start -->
-<div class="services ">
+<div class="services mt-3">
     <div class="container">
         <!-- Main title -->
         <div class="main-title-5 ">
@@ -249,7 +226,7 @@
                             <div class="popular-places-inner">
                                 <div class="popular-places-overflow">
                                     <div class="popular-places-photo">
-                                        <img class="img-fluid w-100" src="/media/media/pop_city.jpg" alt="properties">
+                                        <img class="img-fluid w-100" src="{% static 'img/cities/pop_city.jpg' %}" alt="properties">
                                     </div>
                                     <div class="info">
                                         <h3>
@@ -257,7 +234,6 @@
                                         </h3>
                                         <p>3 Properties</p>
                                     </div>
-                                    <div class="new">New</div>
                                 </div>
                             </div>
                         </div>
@@ -267,7 +243,7 @@
                             <div class="popular-places-inner">
                                 <div class="popular-places-overflow">
                                     <div class="popular-places-photo">
-                                        <img class="img-fluid w-100" src="/media/media/iStock-171572347-1-scaled.jpg"
+                                        <img class="img-fluid w-100" src="{% static 'img/cities/pop_city.jpg' %}"
                                             alt="properties">
                                     </div>
                                     <div class="info">
@@ -276,7 +252,7 @@
                                         </h3>
                                         <p>8 Properties</p>
                                     </div>
-                                    <div class="new">New</div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -286,7 +262,7 @@
                             <div class="popular-places-inner">
                                 <div class="popular-places-overflow">
                                     <div class="popular-places-photo w-100">
-                                        <img class="img-fluid" src="/media/media/pop_city.jpg" alt="properties">
+                                        <img class="img-fluid" src="{% static 'img/cities/pop_city.jpg' %}" alt="properties">
                                     </div>
                                     <div class="info">
                                         <h3>
@@ -294,7 +270,7 @@
                                         </h3>
                                         <p>4 Properties</p>
                                     </div>
-                                    <div class="new">New</div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -304,7 +280,7 @@
                             <div class="popular-places-inner">
                                 <div class="popular-places-overflow">
                                     <div class="popular-places-photo w-100">
-                                        <img class="img-fluid" src="/media/media/pop_city.jpg" alt="properties">
+                                        <img class="img-fluid" src="{% static 'img/cities/pop_city.jpg' %}" alt="properties">
                                     </div>
                                     <div class="info">
                                         <h3>
@@ -312,7 +288,7 @@
                                         </h3>
                                         <p>2 Properties</p>
                                     </div>
-                                    <div class="new">New</div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -325,7 +301,7 @@
                         <div class="popular-places-overflow">
                             <div class="popular-places-photo">
                                 <div class="popular-places-photodd">
-                                    <img class="img-fluid big-img w-100" src="/media/media/pop_city.jpg"
+                                    <img class="img-fluid big-img w-100" src="{% static 'img/cities/pop_city.jpg' %}"
                                         alt="properties">
                                 </div>
                             </div>
@@ -335,7 +311,7 @@
                                 </h3>
                                 <p>20 Properties</p>
                             </div>
-                            <div class="new">New</div>
+                            
                         </div>
                     </div>
                 </div>
@@ -502,16 +478,7 @@
                     <div class="team-info">
                         <img src="{% static 'img/team/HEAD_SHOTS/MARIA VITTORIA CATAMO - HEAD OF MARKETING.jpeg' %}"
                             alt="agent-5" class="img-fluid">
-                        <div class="overlay">
-                            <div class="text-section">
-                                <div class="social-list">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google"></i></a>
-                                </div>
-                                <a href="agent-detail.html" class="btn btn-primary">Meet Now</a>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="team-box">
                         <div class="team-details">
@@ -673,16 +640,18 @@
       <p class="text-lead">Want to know more?</p>
       <h3 class="display-5 pb-4" style="color:#00CE8D;"><span style="color:#252626">Contact us</span> today</h3>
       <div class="d-flex justify-content-between">
-        <button type="button" class="btn p-2 cont-sec"><i class="fa fs-5 fa-phone px-2"></i>Call Us</button>
-        <button type="button" class="btn p-2 cont-sec"><i class="fa fs-5 fa-whatsapp px-2"></i>whatsapp</button>
+        <a href="tel://+44 161 713 3883"> <button type="button" class="btn p-2 cont-sec"><i class="fa fs-5 fa-phone px-2"></i>Call Us</button></a>
+        <a href="https://api.whatsapp.com/send?phone=1617133883&text=Hi%2C I enquired through the LPC-Invest website and am interested in your project" target="_blank">
+            <button type="button" class="btn p-2 cont-sec"><i class="fa fs-5 fa-whatsapp px-2"></i>whatsapp</button></a>
       </div>
 
       <p class="lead py-4">
         Our team of expert property consultants are on hand to answer your questions and help you plan your perfect investment. Book an appointment today to start your investment journey.
       </p>
       <div class="d-flex justify-content-between">
-        <button type="button" class="btn cont-sec p-2"><i class="fa fs-5 fa-envelope px-2"></i>Email</button>
-        <button type="button" class="btn cont-sec p-2"><i class="fa fs-5 fa-edit px-2"></i>Appointment</button>
+        <a href="mailto:info@lpcinvest.com"><button type="button" class="btn cont-sec p-2"><i class="fa fs-5 fa-envelope px-2"></i>Email</button></a>
+        <a href="https://calendly.com/tusharspatil808/30min?month=2022-12" target="_blank">
+        <button type="button" class="btn cont-sec p-2"><i class="fa fs-5 fa-edit px-2"></i>Appointment</button></a>
       </div>
 
     </div>
@@ -803,36 +772,5 @@
 </div>
 <!-- Partners end -->
 
-<!-- Cookie PopUp start -->
-<div class="row" >
-  <div class="col-12 p-0 m-0" id="popUp" style="position:fixed;z-index:999; left:0;bottom:0;">
-    <div style="
-          background-color:rgba(255,255,255,0.7);
-          width:100%;
-          position:fixed;
-          height:100%;
-          backdrop-filter:blur(10px);z-index:0;">
-    </div>
 
-    <div class="card" style="width:100%;background:transparent">
-      <img class="card-img-top mx-auto py-3" style="width:70px;" src="{% static 'cookie-ac.png' %}" alt="Card image cap">
-      <div class="card-body text-center">
-        <h5 class="card-title">We use Cookies</h5>
-        <p class="card-text">We use cookies to personalise content and monitor traffic.</p>
-        <div class="d-flex justify-content-around">
-          <button class="btn cont-sec text-light" onclick="hcookie()">Accept</button>
-          <a href="#" class="btn btn-dark">Reject</a>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-
-</div>
-<!-- Cookie PopUp end -->
-<script type="text/javascript">
-  function hcookie(){
-    document.getElementById('popUp').style.display="none";
-  }
-</script>
 {%endblock body%}

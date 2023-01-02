@@ -1,11 +1,14 @@
 {% extends 'user/basic.html' %} {% load static %} {% block title %} Meet The Team {%endblock title%} {% block css %} {% endblock css %} {% block body %}
+
 <!-- Sub banner start -->
-<div class="sub-banner h-75"
-  style="background:url('/media/9-bl.png');background-attachment:center;
-  background-repeat:no-repeat;background-position:center;background-size:cover;">
+<div class="sub-banner">
   <div class="container">
     <div class="breadcrumb-area">
-      <h4 class="display-4 text-light">Meet the team</h4>
+      <h1>{{page_data.member_name}}</h1>
+      <ul class="breadcrumbs">
+        <li><a href="/">Home</a></li>
+        <li class="active"><a href='/about'>About</a></li> <li class="active">Meet the team</li>
+      </ul>
     </div>
   </div>
 </div>

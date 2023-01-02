@@ -5,7 +5,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .forms import LoginForm, RegisterForm
 import json
-from django.db.models import Q
+from django.db.models import    Q
 from collections import defaultdict
 from django.db.models import Max,Min
 from django.http import JsonResponse
@@ -28,7 +28,7 @@ import requests
 
 def common(request):
     feature_data = {}
-    cities = list(PropertyCities.objects.all().values_list('name', flat=True))
+    cities = list(PropertyCities.objects.all().order_by('name').values_list('name', flat=True))
     status = list(StatusMaster.objects.all().values_list('status', flat=True))
     feature_data['cities'] = cities
     feature_data['status'] = status
@@ -114,7 +114,10 @@ def clean_property_data(property,user_id= None):
         "price":property.price,
         "pub_date":convert_time_ago(property.pub_date),
         "is_favorite":is_checked,
-        "status":status
+        "status":status,
+        "yields":property.yields,
+        'city':property.get_city_display,
+        'type':property.get_type_display,
     }
     return properties_dict
 
@@ -132,11 +135,6 @@ def home_page(request):
 def about(request):
     return render(request,'user/about_us.html')
 
-def teams(request):
-    return render(request,'user/teams.html')
-
-def partners(request):
-    return render(request,'user/partners.html')
 
 def property(request):
     return HttpResponse('property Page....')
@@ -266,8 +264,10 @@ def property_listing(request,type_dict=None):
 def property_listing_map(request):
     return render(request,'user/property/properties_map.html')
 
+import time
 
 def property_view(request,id):
+    st = time.time()
     feature_data = dict()
     property = Properties.objects.get(id = id)
     prop_images = PropertyImage.objects.filter(property = property)
@@ -296,24 +296,25 @@ def property_view(request,id):
     similar_properties = Properties.objects.filter(city = property.city)[:2]
     page_data = {'page_name':property.title}
     Calculated_data = MortgageCalculator(property.price)
-
-    if property.type == "2":
-        property.type = 'Studio'
-    elif property.type == "1":
-        property.type = 'Apartment'
-
-    # if request.is_ajax():
+    # if request.is_ajax(): 
     #     properties_list = SendPropertiesToMap(request,property)
     #     return JsonResponse({'data':properties_list})
 
     location_coord = json.dumps([{'latitude':property.lat,"longitude":property.lon}])
-    images_gallery = PropertyImage.objects.filter(property = 15)
+
+    images_gallery = PropertyImage.objects.filter(property = 16)[:3]
+    ed = time.time()
+    print(ed - st)
+
     return render(request,'user/property/properties-details1.html',{'property':property,'prop_images':prop_images,"furniture_data":furniture_data,
     "similar_properties":similar_properties,"feature_data":feature_data,"Calculated_data":Calculated_data,"images_gallery":images_gallery,
     "page_data":page_data,"location_coord":location_coord})
+    # return render(request,'user/property/properties-details1.html')
 
 
 def filter_property(query,properties):
+
+
     # Query Validation
     if query['city'] == 'City':
         query['city'] = ''
@@ -334,12 +335,14 @@ def filter_property(query,properties):
         except:
             pass
 
+
     if not 'all' in query['status']:
         dt = PropertyStatusMapper.objects.all()
         status_id = StatusMaster.objects.filter(status__in=query['status'])
         dt = dt.filter(status__in=status_id)
         dt_ids = list(dt.values_list('property', flat=True))
         properties = properties.filter(id__in = dt_ids)
+
 
     dt = PropertyFurnitureMapper.objects.all()
     if query['garage'] != 'Garage':
@@ -348,6 +351,7 @@ def filter_property(query,properties):
             furniture_counts=int(query['garage']))
         dt1 = list(dt1.values_list('property', flat=True))
         properties = properties.filter(id__in = dt1)
+
 
     if query['bedrooms'] != 'Bedrooms':
         dt2 = dt.filter(furniture_type__in=get_containing(FURNITURE_TYPE_CHOICES,"room")).filter(
@@ -361,11 +365,14 @@ def filter_property(query,properties):
         dt3 = list(dt3.values_list('property', flat=True))
         properties = properties.filter(id__in = dt3)
 
+
     properties = properties.filter(city__in=get_containing(CITIES_CHOICES,query["city"])).filter(
         price__range=(int(query['min_price']),int(query['max_price']))).filter(
-        area__range=(int(query['min_area']),int(query['max_area']))).filter(
         type__in = get_containing(PROP_TYPE_CHOICES,query['type'])
         )
+
+    #  .filter(
+    #     area__range=(int(query['min_area']),int(query['max_area']))).
 
     return properties
 
@@ -440,7 +447,9 @@ def search(request):
             fav_properties.append(clean_property_data(prop,request.user))
             properties = fav_properties
     except:
-        pass
+        for prop in properties:
+            fav_properties.append(clean_property_data(prop))
+            properties = fav_properties
 
     return render(request,'user/property/properties-list-leftsidebar.html',{"properties":properties,"properties_data":properties_data})
 
@@ -455,16 +464,6 @@ def get_properties(in_property):
     properties = Properties.objects.filter(city=in_property.city)
     properties_list = []
     for property in properties:
-        d = defaultdict(list)
-        prop = PropertyFurnitureMapper.objects.filter(property = property)
-        for furniture in prop:
-            furniture.furniture_type = int(furniture.furniture_type)
-            if furniture.furniture_type == 1:
-                d['room'].append(furniture.furniture_counts.furniture_counts)
-            elif furniture.furniture_type == 2:
-                d['bathrooms'].append(furniture.furniture_counts.furniture_counts)
-            elif furniture.furniture_type == 3:
-                d['garage'].append(furniture.furniture_counts.furniture_counts)
          # Point two
         lon2 = property.lon
         lat2 = property.lat
@@ -482,11 +481,12 @@ def get_properties(in_property):
             "latitude": float(property.lat),
             "longitude": float(property.lon),
             "address": str(property.adddress),
-            "area": property.area,
-            'bathroom':",".join(d['bathrooms']),
-            "garage": ",".join(d['bathrooms']),
-            'bedroom':",".join(d['room']),
-            "image": "http://127.0.0.1:8000/media/"+str(property.image),
+            "city": str(property.get_city_display),
+            "area":11,
+            'bathroom':1,
+            "garage": 1,
+            'bedroom':1,
+            "image": "/media/"+str(property.image),
             "type_icon": "img/building.png",
             "distance":distance})
 
@@ -806,6 +806,11 @@ def construction_update_view(request,property_name):
 def faqs(request):
     return render(request,'user/faq.html')
 
+def teams(request):
+    return render(request,'user/teams.html')
+
+def partners(request):
+    return render(request,'user/partners.html')
 
 class LoginView(auth_views.LoginView):
     form_class = LoginForm

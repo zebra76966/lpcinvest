@@ -1,7 +1,7 @@
 {% extends 'user/basic.html' %} {% load static %}
 {% load templatehelpers %}
 
-{% block title %} Properties-Listing{% endblock title%}
+{% block title %} Properties{% endblock title%}
 
 
 {% block css %} {% endblock css %} {% block body %}
@@ -10,10 +10,10 @@
 <div class="sub-banner">
   <div class="container">
     <div class="breadcrumb-area">
-      <h1>Properties Listing</h1>
+      <h1>Properties</h1>
       <ul class="breadcrumbs">
         <li><a href="/">Home</a></li>
-        <li class="active">Properties Listing</li>
+        <li class="active">Properties</li>
       </ul>
     </div>
   </div>
@@ -206,19 +206,20 @@
             <div class="s-border"></div>
             <div class="m-border"></div>
             {%for property in common_properties_data.recent_properties%}
-            <div class="d-flex justify-content-between d-flex mb-3 recent-posts-box">
-              <a class="col-6 p-0" href="/properties/{{property.id}}">
-                <img src="/media/{{property.image}}" alt="small-properties" class="img-fluid flex-shrink-0 me-3" />
-              </a>
-              <div class="detail col-6 align-self-center">
-                <h5 class="m-0">
-                  <a href="/properties/{{property.id}}">{{property.title}}</a>
-                </h5>
-                <div class="listing-post-meta">
-                  £{{property.price}}
-                  <a  class="d-block" href="/properties/{{property.id}}"><i class="fa fa-calendar"></i> {{property.pub_date}} </a>
+            <div class="d-flex mb-3 recent-posts-box">
+                <a class="col-6 p-0" href="/properties/{{property.id}}">
+                    <img src="/media/{{property.image}}" alt="small-properties" class="flex-shrink-0 img-fluid w-100" />
+                </a>
+                <div class="detail col-6 align-self-center">
+                    <h5 class="m-0">
+                        <a href="/properties/{{property.id}}">{{property.title}}</a>
+                    </h5>
+                    <div class="listing-post-meta">
+                        ${{property.price}}
+                        <a href="/properties/{{property.id}}" class="d-block"><i class="fa fa-calendar"></i>
+                            {{property.pub_date}} </a>
+                    </div>
                 </div>
-              </div>
             </div>
             {%endfor%}
           </div>
@@ -385,7 +386,7 @@
           </div>
         </div>
 
-        <div id="grid_view_div" style="display: none">
+         <div id="grid_view_div" style="display: none" >
           <div class="row">
             {%for property in properties %}
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -402,14 +403,17 @@
                     </h4>
                     <p class="location">
                       <a href="/properties/{{property.id}}">
-                        <i class="fa fa-map-marker"></i> {{property.adddress}}
+                        <i class="fa fa-map-marker"></i> {{property.city | title}}
                       </a>
+                      {%if property.yields %}
+                    <p class="location">
+                      <a><span> <i class="fa fa-info-circle"></i> Net Yields: </span>{{property.yields}}</a>
                     </p>
-                    <ul class="facilities-list clearfix">
-                      <li><i class="flaticon-area"></i> {{property.area}} sq ft</li>
-                      <li><i class="flaticon-bathroom"></i> {{property.bathrooms}} Baths</li>
-                      <li><i class="flaticon-bed"></i> {{property.room}} Bedrooms</li>
-                    </ul>
+                    {%endif%}
+
+                    {%if property.room %}
+                    <p class="location"><a><span><i class="fa fa-home"></i> Units: </span> {{property.room}} Bed {{property.type | title}}</a></p>
+                    {%endif%}
                   </div>
                 </div>
                 <div class="team-hover-content">
@@ -419,19 +423,21 @@
                   <div class="property-info mt-0">
                     <h4 class="properties-name">
                       <a href="/properties/{{property.id}}">{{property.title}}</a>
-                    </h4>
-                    <p class="location">
-                      <a href="/properties/{{property.id}}">
-                        <i class="fa fa-map-marker"></i> {{property.adddress}}
-                      </a>
-                    </p>
-                  </div>
-                  <ul class="member-socials clearfix">
-                    <li><i class="flaticon-area"></i> {{property.area}} sq ft</li>
-                    <li><i class="flaticon-bathroom"></i> {{property.bathrooms}} Baths</li>
-                    <li><i class="flaticon-bed"></i> {{property.room}} Bedrooms</li>
+                      <p class="location">
+                        <a href="/properties/{{property.id}}">
+                          <i class="fa fa-map-marker"></i> {{property.city | title}}
+                        </a>
+                        {%if property.yields %}
+                      <p class="location">
+                        <a><i class="fa fa-info-circle"></i> Net Yields: {{property.yields}}</a>
+                      </p>
+                      {%endif%}
 
-                  </ul>
+                      {%if property.room %}
+                      <p class="location"><a><i class="fa fa-home"></i> Units: {{property.room}} Bed {{property.type | title}}</a></p>
+                      {%endif%}
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -463,16 +469,21 @@
                       <a href="/properties/{{property.id}}">{{property.title}}</a>
                     </h3>
                     <h5 class="location">
-                      <a href="/properties/{{property.id}}">
-                        <i class="flaticon-pin"></i>{{property.adddress}}
+                      <a href="/properties/{{property.id}}"><span>
+                        <i class="fa fa-map-marker"></i>{{property.city | title}}</span>
                       </a>
                     </h5>
+                    {%if property.yields %}
+                    <h5 class="location">
+                      <a><span> <i class="fa fa-info-circle"></i> Net Yields: </span>{{property.yields}}</a>
+                    </h5>
+                    {%endif%}
+
+                    {%if property.room %}
+                    <h5 class="location"><a><span><i class="fa fa-home"></i> Units: </span> {{property.room}} Bed {{property.type | title}}</a></h5>
+                    {%endif%}
                   </div>
-                  <ul class="facilities-list clearfix">
-                    <li><span>Area</span>1200 Sqft</li>
-                    <li><span>Bedrooms</span> {{property.room}}</li>
-                    <li><span>Baths</span> {{property.bathrooms}}</li>
-                  </ul>
+
                   <div class="footer">
                     {% if property.is_favorite %}
                     <i class="heart fa fa-heart" id="{{property.id}}"></i>
@@ -487,6 +498,7 @@
           </div>
           {%endfor%}
         </div>
+
 
 
 
@@ -540,6 +552,9 @@
     <button type="submit" class="btn btn-sm button-theme">Search</button>
   </form>
 </div>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
 
 <script>
   function finalurl() {

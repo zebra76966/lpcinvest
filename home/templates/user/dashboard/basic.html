@@ -94,8 +94,10 @@
       <i class="fa fa-close"></i>
     </div>
     <div class="sidebar-inner">
-      <div class="sidebar-logo">
-        <img src="img/logos/black-logo.png" alt="sidebarlogo" />
+      <div class="sidebar-logo border-0" >
+
+        <img src="/static/img/logo/logo3.png" alt="sidebarlogo" />
+        <div class="bgcurve d-md-block d-lg-none"></div>
       </div>
       <div class="sidebar-navigation">
         <ul class="menu-list">
@@ -150,25 +152,31 @@
 
               </ul>
           </li>
-          <li>
-              <a href="/contact">Contact Us</a>
-          </li>
+          <li><a href="/login">About Us <em class="fa fa-chevron-down"></em></a>
+            <ul>
+                <li>  <a class="dropdown-item" href="/about">About LPC</a></li>
+                <li>  <a class="dropdown-item" href="#">lPC in the community</a></li>
+                <li><a class="dropdown-item" href="/about/team">Meet the team</a></li>
+                <li> <a class="dropdown-item" href="/about/partners">Partners</a></li>
+
+            </ul>
+        </li>
+        <li><a href="/login">Contact Us<em class="fa fa-chevron-down"></em></a>
+          <ul>
+              <li>  <a class="dropdown-item" href="/contact">Contact Us</a></li>
+              <li>  <a class="dropdown-item" target="_blank"
+                  href="https://calendly.com/tusharspatil808/30min?month=2022-12">Book
+                  Appointment</a></li>
+          </ul>
+      </li>
           <li><a href="/login">My Account <em class="fa fa-chevron-down"></em></a>
               <ul>
                   <li><a href="/login">Login</a></li>
                   <li><a href="/register">Register</a></li>
                   <li><a href="/profile">Profile</a></li>
-                  <li><a href="/my-properties">My Properties</a></li>
-
                   <li><a href="/favorited-properties">Favorited Properties </a></li>
-
                   <li><a href="/exclusive-properties">Exclusive Properties</a></li>
-
                   <li><a href="/monthly-offers">Offers</a></li>
-
-                  <li><a href="/submit-property">Submit Property</a></li>
-
-
 
               </ul>
           </li>
@@ -290,40 +298,60 @@
                         </li>
 
                            
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="/about" id="navbarDropdownMenuLink6"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us
-                          </a>
-
-                      </li>
+                      
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="/contact" id="navbarDropdownMenuLink6"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us
-                          </a>
+                        <a class="nav-link dropdown-toggle" href="/about" id="navbarDropdownMenuLink6"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/about">About LPC</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">lPC in the community</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/about/team">Meet the team</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/about/partners">Partners</a>
+                    </li>
+                    </li>
+                    </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="/contact" id="navbarDropdownMenuLink6"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li>
+                              <a class="dropdown-item" href="/contact">Contact Us</a>
+                          </li>
+                          <li>
+                              <a class="dropdown-item" target="_blank"
+                                  href="https://calendly.com/tusharspatil808/30min?month=2022-12">Book
+                                  Appointment</a>
+                          </li>
+                      </ul>
 
-                      </li>
-                      <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="/profile" id="navbarDropdownMenuLink7"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              My Account
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <li><a class="dropdown-item" href="/profile">Dashboard</a></li>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/profile" id="navbarDropdownMenuLink7"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Account
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/profile">Login</a></li>
+                        <li><a class="dropdown-item" href="/profile">Register</a></li>
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="/favorited-properties">Favorited Properties</a></li>
 
-                              <li><a class="dropdown-item" href="/login">Login</a></li>
-                              <li><a class="dropdown-item" href="/register">Register</a></li>
-                              <!-- <li><a class="dropdown-item" href="forgot-password.html">Forgot Password</a></li>
-                              <li><a class="dropdown-item" href="dashboard.html">Dashboard</a></li>
-                              <li><a class="dropdown-item" href="my-profile.html">My Profile</a></li>
-                              <li><a class="dropdown-item" href="/favorited-properties">My Properties</a></li>
-                              <li> <a class="dropdown-item" href="/exclusive-properties">My Invoices</a></li>
-                              <li><a class="dropdown-item" href="/favorited-properties">Favorited
-                                      Properties</a></li>
-                              <li><a class="dropdown-item" href="messages.html">Messages</a></li>
-                              <li><a class="dropdown-item" href="bookings.html">Bookings</a></li> -->
-                              <!-- <li><a class="dropdown-item" href="/submit-property">Submit Property</a></li> -->
-                          </ul>
-                      </li>
+                        <li><a class="dropdown-item" href="/exclusive-properties">Exclusive Properties</a></li>
+
+                        <li><a class="dropdown-item" href="/monthly-offers">Offers</a></li>
+
+
+
+
+                        </ul>
+                </li>
 
               </ul>
 
